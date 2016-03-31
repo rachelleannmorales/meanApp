@@ -11,4 +11,22 @@
     </a>
   </div>
   <div>{{article.content}}</div>
+
+</section>
+<section>
+     <form name="commentForm">
+    <div id="name-group" class="form-group">
+      <label>Comment</label>
+      <textarea name="comment" class="form-control" placeholder="Comment"></textarea> 
+      <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+     </div>
+  </form>
+
+</section>
+<section>
+  <ul class="articles unstyled">
+    <li data-ng-repeat = "comment in article.comments'">
+
+   </li>
+  </ul>
 </section>
