@@ -44,5 +44,11 @@ CommentSchema.path('content').validate(function(content) {
   return !!content;
 }, 'Content cannot be blank');
 
+CommentSchema.statics.load = function(id, cb) {
+  this.findOne({
+    _id: id
+  }).populate('user', 'name username').exec(cb);
+};
+
 
 mongoose.model('Comment', CommentSchema);
