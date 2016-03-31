@@ -1,0 +1,20 @@
+<div class="" data-ng-controller="CommentsController" data-ng-init="find()">
+  <ol data-ng-repeat="comment in comments">
+  <li>
+      <span>a{{comment.created | date:'medium'}}</span> 
+      </li>
+  
+  </ol>
+ <form name="commentForm" class="form-horizontal col-md-6" role="form" data-ng-submit="create(commentForm.$valid)" novalidate>
+  <div class="form-group">
+      <div class="col-md-offset-3 col-md-9">
+      <div class="col-md-9">
+        <textarea name="content" data-ng-model="comment.content" id="content" cols="30" rows="10" placeholder="Content" class="form-control" required></textarea>
+      </div>
+    </div>
+        <button mean-token="'create-submit'" type="submit" class="btn btn-info">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+

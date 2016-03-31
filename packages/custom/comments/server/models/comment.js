@@ -1,0 +1,48 @@
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+var mongoose = require('mongoose'),
+  Schema = mongoose.Schema;
+
+
+/**
+ * Comment Schema
+ */
+var CommentSchema = new Schema({
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  content: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  article: {
+    type: Schema.ObjectId,
+    ref: 'Article',
+    required: true
+  },
+
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  updated: {
+    type: Array
+  }
+});
+
+/**
+ * Validations
+ */
+
+CommentSchema.path('content').validate(function(content) {
+  return !!content;
+}, 'Content cannot be blank');
+
+
+mongoose.model('Comment', CommentSchema);
