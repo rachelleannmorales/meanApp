@@ -13,5 +13,6 @@ angular.module('mean.comments').config(['$stateProvider',
         url: '/comments/create',
         templateUrl: '/comments/views/index.html'
       })
+      
   }
 ]);

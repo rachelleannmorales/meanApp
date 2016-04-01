@@ -38,5 +38,7 @@ Comments.register(function(app, auth, database) {
         //you now have the settings object
     });
     */
+    
+    
   return Comments;
 });

@@ -47,7 +47,8 @@ CommentSchema.path('content').validate(function(content) {
 CommentSchema.statics.load = function(id, cb) {
   this.findOne({
     _id: id
-  }).populate('user', 'name username').exec(cb);
+  }).populate('user', 'name username')
+  .exec(cb);
 };
 
 
