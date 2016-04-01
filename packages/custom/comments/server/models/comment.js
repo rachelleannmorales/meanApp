@@ -29,7 +29,6 @@ var CommentSchema = new Schema({
   user: {
     type: Schema.ObjectId,
     ref: 'User',
-    required: true
   },
   updated: {
     type: Array

@@ -17,7 +17,13 @@ module.exports = function(Comments) {
          */
         create: function(req, res) {
             var comment = new Comment(req.body);
-            comment.user = req.user;
+            if(!req.user){
+                    var _u=null;
+                }
+                else{
+                    var _u=req.user;
+                }
+            comment.user = _u;
             var id=comment.article;
             comment.article = mongoose.Types.ObjectId(comment.article);
             comment.save(function(err) {

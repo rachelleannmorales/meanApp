@@ -28,7 +28,7 @@ module.exports = function(Articles) {
         create: function(req, res) {
             var article = new Article(req.body);
             article.user = req.user;
-
+                article.permissions.push("anonymous");
             article.save(function(err) {
                 if (err) {
                     return res.status(500).json({
@@ -64,10 +64,17 @@ module.exports = function(Articles) {
                     });
                 }
 
+                 if(!req.user){
+                    var _u=article.user;
+                }
+                else{
+                    var _u=req.user.name;
+                }
+
                 Articles.events.publish({
                     action: 'updated',
                     user: {
-                        name: req.user.name
+                        name: _u
                     },
                     name: article.title,
                     url: config.hostname + '/articles/' + article._id
@@ -105,11 +112,16 @@ module.exports = function(Articles) {
          * Show an article
          */
         show: function(req, res) {
-
+                if(!req.user){
+                    var _u=""
+                }
+                else{
+                    var _u=req.user.name
+                }
             Articles.events.publish({
                 action: 'viewed',
                 user: {
-                    name: req.user.name
+                    name: _u
                 },
                 name: req.article.title,
                 url: config.hostname + '/articles/' + req.article._id

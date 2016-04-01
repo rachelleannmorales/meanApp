@@ -30,8 +30,8 @@ module.exports = function(Articles, app, auth) {
     .get(articles.all)
     .post(auth.requiresLogin, hasPermissions, articles.create);
   app.route('/api/articles/:articleId')
-    .get(auth.isMongoId, articles.show)
-    .put(auth.isMongoId, auth.requiresLogin, hasAuthorization, hasPermissions, articles.update)
+    .get(articles.show)
+    .put(articles.update)
     .delete(auth.isMongoId, auth.requiresLogin, hasAuthorization, hasPermissions, articles.destroy);
 
   // Finish with setting up the articleId param

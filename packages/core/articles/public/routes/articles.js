@@ -27,7 +27,6 @@ angular.module('mean.articles').config(['$stateProvider',
       .state('article by id', {
         url: '/articles/:articleId',
         templateUrl: '/articles/views/view.html',
-      
       });
   }
 ]);
