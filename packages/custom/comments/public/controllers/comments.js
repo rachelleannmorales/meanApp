@@ -5,9 +5,9 @@
   angular
     .module('mean.comments')
     .controller('CommentsController',
-     ['$scope', '$stateParams','$location','Global', 'Comments','MeanUser','Articles',
+     ['$scope','$stateParams','$state','$location','Global', 'Comments','MeanUser','Articles',
 
-  function($scope, $stateParams, $location,Global, Comments,
+  function($scope, $stateParams,$state, $location,Global, Comments,
     MeanUser, Articles) {
     $scope.global = Global;
 
@@ -30,15 +30,14 @@
               article.comments.push(id);
               article.$update(function() {
                 $location.path('articles/' + article._id);
-                });
+                $state.reload();
+              });
             });
             });
       
       }
   }; 
       
-
-    
     $scope.find = function() {
       Comments.query(function(comments) {
         $scope.comments = comments;
