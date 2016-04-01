@@ -60,7 +60,15 @@ ArticleSchema.statics.load = function(id, cb) {
   this.findOne({
     _id: id
   }).populate('user', 'name username')
-  .populate('comments') 
+  .populate({ 
+     path: 'comments',
+     model: 'Comment',
+     options:{ sort: [ '-created' ] },
+     populate: {
+       path: 'user',
+       model: 'User'
+     } 
+  }) 
   .exec(cb);
 };
 

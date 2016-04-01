@@ -30,9 +30,8 @@
               article.comments.push(id);
               article.$update(function() {
                 $location.path('articles/' + article._id);
-              });
+                });
             });
-$location.path('articles/' + article._id);
             });
       
       }

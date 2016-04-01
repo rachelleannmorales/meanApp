@@ -12,28 +12,31 @@
   </div>
   <div>{{article.content}}</div>
 
- <ul class="articles unstyled">
-    <li data-ng-repeat="comment in article.comments">
-      <span>{{comment.content}}</span>
-      </li>
-  </ul>
-  
-</section>
-
-<section class="" data-ng-controller="CommentsController">
- <form name="commentForm" class="form-horizontal col-md-6" role="form" data-ng-submit="create(commentForm.$valid)" novalidate>
+<h2>Add Comment</h2>
+<section class="" data-ng-controller="CommentsController" >
+ <form name="commentForm" role="form" data-ng-submit="create(commentForm.$valid)" novalidate>
   <div class="form-group">
       <div class="col-md-9">
         <textarea name="content" data-ng-model="comment.content" id="content"  placeholder="Content" class="form-control" required></textarea>
       </div> 
-      <div class="col-md-3">
-           <button mean-token="'create-submit'" type="submit" class="btn btn-info">Submit</button>
+      <div >
+           <button mean-token="'create-submit'" type="submit" class="btn btn-info btn-large">Submit
+           </button>
        </div>
     </div>
   </form>
-<div>
- </div>
-
-
-
 </section>
+
+<div>
+<h2>Comments</h2>
+    
+      <div class="panel panel-default" data-ng-repeat="comment in article.comments">
+      <div class="panel-heading">{{comment.user.name }}/{{comment.created | date:'medium'}}</div>
+      <div class="panel-body">
+        {{comment.content}}
+      </div>
+    </div>
+  </div>
+</section>
+
+
